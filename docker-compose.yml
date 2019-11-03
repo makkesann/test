@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    image: "postgres:9.6.2"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=password"
+    volumes_from:
+      - data
+    ports:
+      - "5432:5432"
+  data:
+    image: "busybox"
+    volumes:
+      - "db:/var/lib/postgresql/data"
+
+volumes:
+  db:
+    driver: local
