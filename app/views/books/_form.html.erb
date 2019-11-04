@@ -31,11 +31,10 @@
     <%= form.number_field :price %>
   </div>
 
+
   <div class="field">
-    <%= form_for @book.user do |f| %>
-      <%= f.label :name %>
-      <%= f.select :name %>
-    <% end %>
+    <%= form.label :name %>
+    <%= form.collection_select :user_id, User.all, :id, :name %>
   </div>
 
   <div class="actions">
