@@ -25,5 +25,5 @@
   <%= @book.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Edit', edit_user_book_path(@user, @book) %> |
+<%= link_to 'Back', user_books_path(@user) %>
