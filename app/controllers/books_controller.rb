@@ -17,21 +17,25 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
+    @user = User.find(params[:user_id])
+    @book = @user.books.build
     @books = Book.all
   end
 
   # GET /books/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @book = @user.books.find(params[:id])
   end
 
   # POST /books
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to user_book_path(@user, @book), notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -43,9 +47,11 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    @user = User.find(params[:user_id])
+    @book = @user.books.find(params[:id])
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to user_book_path(@user, @book), notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
