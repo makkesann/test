@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      book: 本
+    attributes:
+      book:
+        title: タイトル
+        isbn: 識別番号
+        description: 概要
+        price: 値段
