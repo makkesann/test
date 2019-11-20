@@ -1,6 +1,6 @@
 <h1>Editing Book</h1>
 
-<%= render 'form-edit', book: @book %>
+<%= render 'form', book: @book, user: @user %>
 
 <%= link_to 'Show', user_book_path(@user, @book) %> |
 <%= link_to 'Back', user_books_path(@user) %>
