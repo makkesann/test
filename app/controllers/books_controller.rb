@@ -24,7 +24,11 @@ class BooksController < ApplicationController
   def edit
     @book = @user.books.find(params[:id])
   end
-
+  
+  def publish
+    @books_publish = @user.books.where(publish: true)
+  end
+  
   # POST /books
   # POST /books.json
   def create
@@ -40,6 +44,7 @@ class BooksController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
@@ -78,6 +83,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :isbn, :description, :price, :user_id)
+      params.require(:book).permit(:title, :isbn, :description, :price, :user_id, :publish)
     end
 end

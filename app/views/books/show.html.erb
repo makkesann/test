@@ -21,8 +21,18 @@
 </p>
 
 <p>
+  <strong>Publish:</strong>
+  <%= @book.publish %>
+</p>
+
+<p>
   <strong>User:</strong>
   <%= @book.user.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @book.codes %>
 </p>
 
 <%= link_to 'Edit', edit_user_book_path(@user, @book) %> |

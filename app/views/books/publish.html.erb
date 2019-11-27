@@ -17,20 +17,18 @@
       <th>Isbn</th>
       <th>Description</th>
       <th>Price</th>
-      <th>Publish</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% @books_publish.each do |book| %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.isbn %></td>
         <td><%= book.description %></td>
         <td><%= book.price %></td>
-        <td><%= book.publish %></td>
         <td><%= book.user.name %></td>
         <td><%= link_to 'Show', user_book_path(@user, book) %></td>
         <td><%= link_to 'Edit', edit_user_book_path(@user, book) %></td>
@@ -39,7 +37,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Book', new_user_book_path %>

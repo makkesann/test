@@ -1,6 +1,12 @@
 <h1>Editing Book</h1>
-
-<%= render 'form', book: @book, user: @user %>
+<% if admin_signed_in? %>
+  <%= render 'form', book: @book, user: @user %>
+<% else %>
+  <p>ログインしてください</p>
+  <%= link_to "ログイン", new_admin_session_path, class: 'post' %> 
+  <%= link_to "新規登録", new_admin_registration_path, class: 'post' %>
+  <br>
+<% end %>
 
 <%= link_to 'Show', user_book_path(@user, @book) %> |
 <%= link_to 'Back', user_books_path(@user) %>
